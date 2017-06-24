@@ -36,11 +36,6 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *playerFullScreenButton;
 
-// 约束动画
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *topViewTop;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *downViewBottom;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *inspectorViewHeight;
-
 
 @end
 
@@ -104,7 +99,6 @@
     // 不隐藏工具条
     [self portraitShow];
     // hideInspector
-    self.inspectorViewHeight.constant = 0.0f;
     [self layoutIfNeeded];
 }
 
@@ -113,8 +107,6 @@
     _isShowToolbar = YES; // 显示工具条置为 yes
     
     // 约束动画
-    self.topViewTop.constant = 0;
-    self.downViewBottom.constant = 0;
     [UIView animateWithDuration:0.1 animations:^{
         [self layoutIfNeeded];
     } completion:^(BOOL finished) {
@@ -129,7 +121,6 @@
     _isShowToolbar = NO; // 显示工具条置为 no
     
     // 约束动画
-    self.downViewBottom.constant = -(self.downView.frame.size.height);
     [UIView animateWithDuration:0.1 animations:^{
         [self layoutIfNeeded];
     } completion:^(BOOL finished) {
@@ -144,7 +135,6 @@
 #pragma mark inspectorView 动画
 - (void)inspectorViewShow {
     // 约束动画
-    self.inspectorViewHeight.constant = 20.0f;
     [UIView animateWithDuration:0.3 animations:^{
         [self layoutIfNeeded];
     } completion:^(BOOL finished) {
@@ -153,7 +143,6 @@
 }
 
 - (void)inspectorViewHide {
-    self.inspectorViewHeight.constant = 0.0f;
     [UIView animateWithDuration:0.3 animations:^{
         [self layoutIfNeeded];
     } completion:^(BOOL finished) {

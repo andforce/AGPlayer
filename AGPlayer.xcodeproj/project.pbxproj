@@ -15,8 +15,6 @@
 		6CB7A94B1D370E7200726DAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CB7A9491D370E7200726DAF /* Main.storyboard */; };
 		6CB7A94D1D370E7200726DAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CB7A94C1D370E7200726DAF /* Assets.xcassets */; };
 		6CB7A9501D370E7200726DAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CB7A94E1D370E7200726DAF /* LaunchScreen.storyboard */; };
-		6CB7A95B1D370E7200726DAF /* AGPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CB7A95A1D370E7200726DAF /* AGPlayerTests.m */; };
-		6CB7A9661D370E7200726DAF /* AGPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CB7A9651D370E7200726DAF /* AGPlayerUITests.m */; };
 		6CB7A9751D370F6C00726DAF /* AGPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CB7A9741D370F6C00726DAF /* AGPlayerView.m */; };
 		6CB7A9771D3712FB00726DAF /* AGPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CB7A9761D3712FB00726DAF /* AGPlayerView.xib */; };
 		6CB7A99D1D39986100726DAF /* NSString+time.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CB7A99C1D39986100726DAF /* NSString+time.m */; };
@@ -56,11 +54,7 @@
 		6CB7A94F1D370E7200726DAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6CB7A9511D370E7200726DAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CB7A9561D370E7200726DAF /* AGPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AGPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6CB7A95A1D370E7200726DAF /* AGPlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AGPlayerTests.m; sourceTree = "<group>"; };
-		6CB7A95C1D370E7200726DAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CB7A9611D370E7200726DAF /* AGPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AGPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6CB7A9651D370E7200726DAF /* AGPlayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AGPlayerUITests.m; sourceTree = "<group>"; };
-		6CB7A9671D370E7200726DAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CB7A9731D370F6C00726DAF /* AGPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGPlayerView.h; sourceTree = "<group>"; };
 		6CB7A9741D370F6C00726DAF /* AGPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPlayerView.m; sourceTree = "<group>"; };
 		6CB7A9761D3712FB00726DAF /* AGPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AGPlayerView.xib; sourceTree = "<group>"; };
@@ -110,8 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				6CB7A93F1D370E7200726DAF /* AGPlayer */,
-				6CB7A9591D370E7200726DAF /* AGPlayerTests */,
-				6CB7A9641D370E7200726DAF /* AGPlayerUITests */,
 				6CB7A93E1D370E7200726DAF /* Products */,
 				02E90757D02113D587CF6E9D /* Pods */,
 				CD9594D1C24E52B680827B39 /* Frameworks */,
@@ -159,24 +151,6 @@
 				6CB7A9411D370E7200726DAF /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		6CB7A9591D370E7200726DAF /* AGPlayerTests */ = {
-			isa = PBXGroup;
-			children = (
-				6CB7A95A1D370E7200726DAF /* AGPlayerTests.m */,
-				6CB7A95C1D370E7200726DAF /* Info.plist */,
-			);
-			path = AGPlayerTests;
-			sourceTree = "<group>";
-		};
-		6CB7A9641D370E7200726DAF /* AGPlayerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				6CB7A9651D370E7200726DAF /* AGPlayerUITests.m */,
-				6CB7A9671D370E7200726DAF /* Info.plist */,
-			);
-			path = AGPlayerUITests;
 			sourceTree = "<group>";
 		};
 		CD9594D1C24E52B680827B39 /* Frameworks */ = {
@@ -384,7 +358,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CB7A95B1D370E7200726DAF /* AGPlayerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,7 +365,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CB7A9661D370E7200726DAF /* AGPlayerUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
