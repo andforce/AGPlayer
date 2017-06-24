@@ -42,12 +42,6 @@ typedef NS_ENUM(NSInteger, TouchPlayerViewMode) {
 // 移除通知
 - (void)removeObserveAndNOtification;
 
-// 切换为横屏
-- (void)setLandscapeLayout;
-
-// 切换为竖屏
-- (void)setProtraitLayout;
-
 // 播放
 - (void)play;
 

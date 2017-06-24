@@ -218,14 +218,15 @@
 // 观察播放进度
 - (void)monitoringPlayback:(AVPlayerItem *)item {
     __weak typeof(self)WeakSelf = self;
-    
+
+    __block BOOL isSliding = _isSliding;
     // 播放进度, 每秒执行30次， CMTime 为30分之一秒
-    _playTimeObserver = [_player addPeriodicTimeObserverForInterval:CMTimeMake(1, 30.0) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+    _playTimeObserver = [_player addPeriodicTimeObserverForInterval:CMTimeMake(1, (int32_t) 30.0) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
         if (_touchMode != TouchPlayerViewModeHorizontal) {
             // 当前播放秒
-            float currentPlayTime = (double)item.currentTime.value/ item.currentTime.timescale;
+            float currentPlayTime = (float)item.currentTime.value/ item.currentTime.timescale;
             // 更新slider, 如果正在滑动则不更新
-            if (_isSliding == NO) {
+            if (!isSliding) {
                 [WeakSelf updateVideoSlider:currentPlayTime];
             }
         } else {
@@ -251,6 +252,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enterBackgroundNotification) name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
 
+- (void)enterForegroundNotification {
+
+}
+
+- (void)enterBackgroundNotification {
+    [self pause];
+}
+
 - (void)playbackFinished:(NSNotification *)notification {
     NSLog(@"视频播放完成通知");
     _playerItem = [notification object];
@@ -267,14 +276,14 @@
         if (_isIntoBackground) {
             return;
         } else { // 判断status 的 状态
-            AVPlayerStatus status = [[change objectForKey:@"new"] intValue]; // 获取更改后的状态
+            AVPlayerStatus status = (AVPlayerStatus) [change[@"new"] intValue]; // 获取更改后的状态
             if (status == AVPlayerStatusReadyToPlay) {
                 NSLog(@"准备播放");
                 // CMTime 本身是一个结构体
                 CMTime duration = item.duration; // 获取视频长度
                 NSLog(@"%.2f", CMTimeGetSeconds(duration));
                 // 设置视频时间
-                [self setMaxDuration:CMTimeGetSeconds(duration)];
+                [self setMaxDuration:(CGFloat) CMTimeGetSeconds(duration)];
                 // 播放
                 [self play];
                 
@@ -287,8 +296,8 @@
         
     } else if ([keyPath isEqualToString:@"loadedTimeRanges"]) {
         NSTimeInterval timeInterval = [self availableDurationRanges]; // 缓冲时间
-        CGFloat totalDuration = CMTimeGetSeconds(_playerItem.duration); // 总时间
-        [self.loadedProgress setProgress:timeInterval / totalDuration animated:YES];
+        CGFloat totalDuration = (CGFloat) CMTimeGetSeconds(_playerItem.duration); // 总时间
+        [self.loadedProgress setProgress:(float) (timeInterval / totalDuration) animated:YES];
     }
 }
 
@@ -305,8 +314,8 @@
     
     // CMTimeRange 结构体 start duration 表示起始位置 和 持续时间
     CMTimeRange timeRange = [loadedTimeRanges.firstObject CMTimeRangeValue]; // 获取缓冲区域
-    float startSeconds = CMTimeGetSeconds(timeRange.start);
-    float durationSeconds = CMTimeGetSeconds(timeRange.duration);
+    float startSeconds = (float) CMTimeGetSeconds(timeRange.start);
+    float durationSeconds = (float) CMTimeGetSeconds(timeRange.duration);
     NSTimeInterval result = startSeconds + durationSeconds; // 计算总缓冲时间 = start + duration
     return result;
 }
@@ -389,7 +398,7 @@
     // self.playProgress.maxValue = value / timeScale
     // value = progress.value * timeScale
     // CMTimemake(value, timeScale) =  (progress.value, 1.0)
-    CMTime changedTime = CMTimeMakeWithSeconds(self.playProgress.value, 1.0);
+    CMTime changedTime = CMTimeMakeWithSeconds(self.playProgress.value, (int32_t) 1.0);
     NSLog(@"%.2f", self.playProgress.value);
     [_playerItem seekToTime:changedTime completionHandler:^(BOOL finished) {
         // 跳转完成后做某事
