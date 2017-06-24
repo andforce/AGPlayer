@@ -38,11 +38,7 @@
 @property (strong, nonatomic) IBOutlet UIProgressView *loadedProgress; // 缓冲进度条
 @property (strong, nonatomic) IBOutlet UIButton *rotationButton;
 
-@property (strong, nonatomic) IBOutlet UIButton *playerButton;
 @property (strong, nonatomic) IBOutlet UIButton *playerFullScreenButton;
-
-@property (strong, nonatomic) IBOutlet UIView *inspectorView; // 继续播放/暂停播放
-@property (strong, nonatomic) IBOutlet UILabel *inspectorLabel; //
 
 // 约束动画
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *topViewTop;
@@ -76,8 +72,6 @@
     [self.playProgress setThumbImage:[UIImage imageNamed:@"icmpv_thumb_light"] forState:(UIControlStateNormal)];
     // 设置progress
      self.loadedProgress.progress = 0.0;
-    // inspectorBackgroundColor
-    self.inspectorView.backgroundColor = [RGBColor(203, 201, 204) colorWithAlphaComponent:0.5]; // 不影响子视图的透明度
 }
 
 
@@ -97,11 +91,8 @@
         // bringFront
         [self.playerView bringSubviewToFront:_topView];
         [self.playerView bringSubviewToFront:_downView];
-        [self.playerView bringSubviewToFront:_playerButton];
         [self.playerView bringSubviewToFront:_playProgress];
         
-        //
-        [self.playerView sendSubviewToBack:_inspectorView];
         // setPortraintLayout
         [self setPortarintLayout];
         
@@ -132,7 +123,6 @@
     [UIView animateWithDuration:0.1 animations:^{
         [self layoutIfNeeded];
         self.topView.alpha = self.downView.alpha = 1;
-        self.playerButton.alpha = self.playerFullScreenButton.alpha = 1;
     } completion:^(BOOL finished) {
     }];
 
@@ -150,7 +140,6 @@
     [UIView animateWithDuration:0.1 animations:^{
         [self layoutIfNeeded];
         self.topView.alpha = self.downView.alpha = 0;
-        self.playerButton.alpha = self.playerFullScreenButton.alpha = 0;
     } completion:^(BOOL finished) {
     }];
     
@@ -162,14 +151,6 @@
 #pragma mark-
 #pragma mark inspectorView 动画
 - (void)inspectorViewShow {
-    //
-    [self.inspectorView.layer removeAllAnimations];
-    // 更改文字
-    if (_isPlaying) {
-        self.inspectorLabel.text = @"继续播放";
-    } else {
-        self.inspectorLabel.text = @"暂停播放";
-    }
     // 约束动画
     self.inspectorViewHeight.constant = 20.0f;
     [UIView animateWithDuration:0.3 animations:^{
@@ -207,10 +188,10 @@
     // 横竖屏判断
     if (self.traitCollection.verticalSizeClass != UIUserInterfaceSizeClassCompact) { // 竖屏
         self.downView.backgroundColor = self.topView.backgroundColor = [UIColor clearColor];
-        [self.rotationButton setImage:[UIImage imageNamed:@"player_fullScreen_iphone"] forState:(UIControlStateNormal)];
+        [self.rotationButton setImage:[UIImage imageNamed:@"ic_screen_large"] forState:(UIControlStateNormal)];
     } else { // 横屏
         self.downView.backgroundColor = self.topView.backgroundColor = RGBColor(89, 87, 90);
-        [self.rotationButton setImage:[UIImage imageNamed:@"player_window_iphone"] forState:(UIControlStateNormal)];
+        [self.rotationButton setImage:[UIImage imageNamed:@"ic_screen_small"] forState:(UIControlStateNormal)];
 
     }
     
@@ -369,16 +350,14 @@
     _isPlaying = YES;
     [_player play]; // 调用avplayer 的play方法
     [self.playButton setImage:[UIImage imageNamed:@"Stop"] forState:(UIControlStateNormal)];
-    [self.playerButton setImage:[UIImage imageNamed:@"player_pause_iphone_window"] forState:(UIControlStateNormal)];
-    [self.playerFullScreenButton setImage:[UIImage imageNamed:@"player_pause_iphone_fullscreen"] forState:(UIControlStateNormal)];
+    [self.playerFullScreenButton setImage:[UIImage imageNamed:@"ic_pause_white_36pt"] forState:(UIControlStateNormal)];
 }
 
 - (void)pause {
     _isPlaying = NO;
     [_player pause];
     [self.playButton setImage:[UIImage imageNamed:@"Play"] forState:(UIControlStateNormal)];
-    [self.playerButton setImage:[UIImage imageNamed:@"player_start_iphone_window"] forState:(UIControlStateNormal)];
-    [self.playerFullScreenButton setImage:[UIImage imageNamed:@"player_start_iphone_fullscreen"] forState:(UIControlStateNormal)];
+    [self.playerFullScreenButton setImage:[UIImage imageNamed:@"ic_play_arrow_white_36pt"] forState:(UIControlStateNormal)];
 }
 
 #pragma mark-
