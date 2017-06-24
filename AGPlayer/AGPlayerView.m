@@ -27,11 +27,7 @@
 @property (strong, nonatomic) IBOutlet UIView *mainView;
 @property (strong, nonatomic) IBOutlet UIView *playerView;
 
-@property (strong, nonatomic) IBOutlet UIView *topView;
-@property (strong, nonatomic) IBOutlet UIButton *moreButton;
-
 @property (strong, nonatomic) IBOutlet UIView *downView;
-@property (strong, nonatomic) IBOutlet UIButton *playButton;
 @property (strong, nonatomic) IBOutlet UILabel *beginLabel;
 @property (strong, nonatomic) IBOutlet UILabel *endLabel;
 @property (strong, nonatomic) IBOutlet UISlider *playProgress;
@@ -89,7 +85,6 @@
         [self.playerView.layer addSublayer:_playerLayer];
         
         // bringFront
-        [self.playerView bringSubviewToFront:_topView];
         [self.playerView bringSubviewToFront:_downView];
         [self.playerView bringSubviewToFront:_playProgress];
         
@@ -122,7 +117,6 @@
     self.downViewBottom.constant = 0;
     [UIView animateWithDuration:0.1 animations:^{
         [self layoutIfNeeded];
-        self.topView.alpha = self.downView.alpha = 1;
     } completion:^(BOOL finished) {
     }];
 
@@ -135,11 +129,9 @@
     _isShowToolbar = NO; // 显示工具条置为 no
     
     // 约束动画
-    self.topViewTop.constant = -(self.topView.frame.size.height);
     self.downViewBottom.constant = -(self.downView.frame.size.height);
     [UIView animateWithDuration:0.1 animations:^{
         [self layoutIfNeeded];
-        self.topView.alpha = self.downView.alpha = 0;
     } completion:^(BOOL finished) {
     }];
     
@@ -187,11 +179,9 @@
     }];
     // 横竖屏判断
     if (self.traitCollection.verticalSizeClass != UIUserInterfaceSizeClassCompact) { // 竖屏
-        self.downView.backgroundColor = self.topView.backgroundColor = [UIColor clearColor];
-        [self.rotationButton setImage:[UIImage imageNamed:@"ic_screen_large"] forState:(UIControlStateNormal)];
-    } else { // 横屏
-        self.downView.backgroundColor = self.topView.backgroundColor = RGBColor(89, 87, 90);
         [self.rotationButton setImage:[UIImage imageNamed:@"ic_screen_small"] forState:(UIControlStateNormal)];
+    } else { // 横屏
+        [self.rotationButton setImage:[UIImage imageNamed:@"ic_screen_large"] forState:(UIControlStateNormal)];
 
     }
     
@@ -349,14 +339,12 @@
 - (void)play {
     _isPlaying = YES;
     [_player play]; // 调用avplayer 的play方法
-    [self.playButton setImage:[UIImage imageNamed:@"Stop"] forState:(UIControlStateNormal)];
     [self.playerFullScreenButton setImage:[UIImage imageNamed:@"ic_pause_white_36pt"] forState:(UIControlStateNormal)];
 }
 
 - (void)pause {
     _isPlaying = NO;
     [_player pause];
-    [self.playButton setImage:[UIImage imageNamed:@"Play"] forState:(UIControlStateNormal)];
     [self.playerFullScreenButton setImage:[UIImage imageNamed:@"ic_play_arrow_white_36pt"] forState:(UIControlStateNormal)];
 }
 
