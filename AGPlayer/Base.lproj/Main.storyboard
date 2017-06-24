@@ -23,59 +23,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3SC-vc-tyP" userLabel="player View" customClass="AGPlayerView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+                                <rect key="frame" x="0.0" y="228" width="375" height="211"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="3SC-vc-tyP" secondAttribute="height" multiplier="25:14" id="wt0-cC-4sq"/>
+                                    <constraint firstAttribute="width" secondItem="3SC-vc-tyP" secondAttribute="height" multiplier="16:9" id="cbV-HV-ZR1"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="wt0-cC-4sq"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="wt0-cC-4sq"/>
-                                    </mask>
-                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="3SC-vc-tyP" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="2sQ-5N-x5u"/>
-                            <constraint firstAttribute="trailing" secondItem="3SC-vc-tyP" secondAttribute="trailing" id="4oY-2M-Wno"/>
-                            <constraint firstItem="3SC-vc-tyP" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Q8m-dR-Ls2"/>
-                            <constraint firstItem="3SC-vc-tyP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eil-aX-fb1"/>
-                            <constraint firstAttribute="trailing" secondItem="3SC-vc-tyP" secondAttribute="trailing" id="gA0-el-FQZ"/>
-                            <constraint firstItem="3SC-vc-tyP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ojD-Bt-UMp"/>
-                            <constraint firstAttribute="bottom" secondItem="3SC-vc-tyP" secondAttribute="bottom" id="x1w-6j-DYf"/>
+                            <constraint firstItem="3SC-vc-tyP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jri-xK-WgQ"/>
+                            <constraint firstItem="3SC-vc-tyP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Xcy-zY-GbA"/>
+                            <constraint firstItem="3SC-vc-tyP" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="bKN-JD-gKm"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="2sQ-5N-x5u"/>
-                                <exclude reference="4oY-2M-Wno"/>
-                                <exclude reference="Q8m-dR-Ls2"/>
-                                <exclude reference="eil-aX-fb1"/>
-                                <exclude reference="gA0-el-FQZ"/>
-                                <exclude reference="ojD-Bt-UMp"/>
-                                <exclude reference="x1w-6j-DYf"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=compact">
-                            <mask key="constraints">
-                                <include reference="4oY-2M-Wno"/>
-                                <include reference="Q8m-dR-Ls2"/>
-                                <include reference="ojD-Bt-UMp"/>
-                                <include reference="x1w-6j-DYf"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="constraints">
-                                <include reference="2sQ-5N-x5u"/>
-                                <include reference="eil-aX-fb1"/>
-                                <include reference="gA0-el-FQZ"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="playerView" destination="3SC-vc-tyP" id="uOa-yP-Ihi"/>
@@ -83,7 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-655.5" y="101"/>
+            <point key="canvasLocation" x="-656.79999999999995" y="100.29985007496252"/>
         </scene>
     </scenes>
 </document>
