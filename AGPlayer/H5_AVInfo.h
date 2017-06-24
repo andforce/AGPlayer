@@ -10,8 +10,8 @@
 
 @interface H5_AVInfo : NSObject
 
-@property (nonatomic, copy) NSString *img;
-@property (nonatomic, copy) NSString *cid;
-@property (nonatomic, copy) NSString *src;
+@property(nonatomic, copy) NSString *img;
+@property(nonatomic, copy) NSString *cid;
+@property(nonatomic, copy) NSString *src;
 
 @end

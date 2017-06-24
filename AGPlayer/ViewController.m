@@ -14,7 +14,7 @@
 
 @interface ViewController ()
 
-@property (nonatomic, strong) H5_AVInfo *avInfo;
+@property(nonatomic, strong) H5_AVInfo *avInfo;
 
 @end
 
@@ -34,15 +34,15 @@
     NSURL *url = [NSURL URLWithString:h5String];
     // 2.
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *getTask = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSURLSessionDataTask *getTask = [session dataTaskWithURL:url completionHandler:^(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error) {
         // 解析数据
         NSDictionary *rootDic = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingMutableContainers) error:nil];
         self.avInfo = [[H5_AVInfo alloc] init];
         [_avInfo setValuesForKeysWithDictionary:rootDic];
         NSURL *url = [NSURL URLWithString:_avInfo.src];
         NSLog(@"%@", _avInfo.src);
-        
-        NSURL * testUrl = [NSURL URLWithString:@"http://gslb.miaopai.com/stream/mt1OeVlHH7QXlLwgFbNrzw__.mp4?ssig=5da7b403b1f9d6b0d46dd580b69cbdd4&time_stamp=1498277889430&cookie_id=594dafc92035d&vend=1&os=3&partner=1&platform=2&cookie_id=&refer=miaopai&scid=mt1OeVlHH7QXlLwgFbNrzw__"];
+
+        NSURL *testUrl = [NSURL URLWithString:@"http://gslb.miaopai.com/stream/mt1OeVlHH7QXlLwgFbNrzw__.mp4?ssig=5da7b403b1f9d6b0d46dd580b69cbdd4&time_stamp=1498277889430&cookie_id=594dafc92035d&vend=1&os=3&partner=1&platform=2&cookie_id=&refer=miaopai&scid=mt1OeVlHH7QXlLwgFbNrzw__"];
         [self.playerView updatePlayerWithURL:testUrl];
     }];
     // 3.
@@ -55,6 +55,7 @@
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent; // 白色的
 }
+
 // 2. 横屏时显示 statusBar
 - (BOOL)prefersStatusBarHidden {
     return NO; // 显示

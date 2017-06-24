@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class AGPlayerView;
 
 @interface ViewController : UIViewController
 
-@property (nonatomic, copy) NSString *aid;
-@property (strong, nonatomic) IBOutlet AGPlayerView *playerView;
+@property(nonatomic, copy) NSString *aid;
+@property(strong, nonatomic) IBOutlet AGPlayerView *playerView;
 
 @end
 

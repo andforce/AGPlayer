@@ -16,7 +16,7 @@
     if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
         SEL selector = NSSelectorFromString(@"setOrientation:");
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
-        
+
         [invocation setSelector:selector];
         [invocation setTarget:[UIDevice currentDevice]];
         int val = orientation;
