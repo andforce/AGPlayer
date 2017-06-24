@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AGPlayerView">
             <connections>
                 <outlet property="beginLabel" destination="T6d-RI-ETa" id="ikD-CL-JIO"/>
+                <outlet property="bottomConstraint" destination="jqe-ze-B9S" id="Yl8-Va-3Gf"/>
                 <outlet property="downView" destination="nnO-Cq-25f" id="fFr-Ve-Gpd"/>
                 <outlet property="endLabel" destination="YKY-uF-OVj" id="rUu-MP-o7p"/>
                 <outlet property="loadedProgress" destination="Mfx-OY-NaT" id="dyk-46-cpl"/>

@@ -35,6 +35,7 @@
 
 @property(strong, nonatomic) IBOutlet UIButton *playerFullScreenButton;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
 @end
 
@@ -105,6 +106,7 @@
 - (void)portraitShow {
     _isShowToolbar = YES; // 显示工具条置为 yes
 
+    _bottomConstraint.constant = 0;
     // 约束动画
     [UIView animateWithDuration:0.1 animations:^{
         [self layoutIfNeeded];
@@ -119,6 +121,7 @@
 - (void)portraitHide {
     _isShowToolbar = NO; // 显示工具条置为 no
 
+    _bottomConstraint.constant = -(self.downView.frame.size.height);;
     // 约束动画
     [UIView animateWithDuration:0.1 animations:^{
         [self layoutIfNeeded];
